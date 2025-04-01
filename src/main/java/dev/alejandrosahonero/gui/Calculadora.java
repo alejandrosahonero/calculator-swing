@@ -31,9 +31,12 @@ public class Calculadora extends JFrame {
         menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
-        JMenuItem menuCient = new JMenuItem("Calculadora Científica");
-        menuCient.addActionListener(new MenuController(this));
-        menu.add(menuCient);
+        JMenuItem calcSciItem = new JMenuItem("Calculadora Científica");
+        calcSciItem.addActionListener(new MenuController(this));
+        menu.add(calcSciItem);
+        JMenuItem darkModeItem = new JMenuItem("Modo Oscuro");
+        darkModeItem.addActionListener(new MenuController(this));
+        menu.add(darkModeItem);
         add(menuBar, BorderLayout.NORTH);
     }
     private void displayResult() {
@@ -68,6 +71,19 @@ public class Calculadora extends JFrame {
             pad.add(btnArray[i]);
         }
         CalcPanel.add(pad, BorderLayout.CENTER);
+    }
+    public void setDarkMode() {
+        CalcPanel.setBackground(new Color(0x1C1C1C));
+        for (JButton button : btnArray) {
+            button.setBackground(new Color(0x1C1C1C));
+            button.setForeground(Color.WHITE);
+            if(button.getText().equals("=")) {
+                button.setBackground(new Color(100, 0, 0));
+                button.setForeground(new Color(255, 255, 255));
+            }
+        }
+        repaint();
+        revalidate();
     }
 
     public JTextField getDisplay() {

@@ -17,14 +17,22 @@ public class MenuController implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("Calculadora Científica")) {
+        String cmd = e.getActionCommand();
+        if (cmd.equals("Calculadora Científica")) {
             calc.setVisible(false);
             calcScientific = new CalculadoraScientific();
             calcScientific.setVisible(true);
-        } else if (e.getActionCommand().equals("Calculadora Básica")) {
+        } else if (cmd.equals("Calculadora Básica")) {
             calcScientific.setVisible(false);
             calc = new Calculadora();
             calc.setVisible(true);
+        }
+        else if (cmd.equals("Modo Oscuro")) {
+            if(calc !=null && calc.isVisible()) {
+                calc.setDarkMode();
+            } else if (calcScientific !=null && calcScientific.isVisible()) {
+                calcScientific.setDarkMode();
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 package dev.alejandrosahonero.gui;
 
+import dev.alejandrosahonero.logic.CalculatorController;
 import dev.alejandrosahonero.logic.CalculatorScientificController;
 import dev.alejandrosahonero.logic.MenuController;
 
@@ -31,9 +32,12 @@ public class CalculadoraScientific extends JFrame {
         menuBar = new JMenuBar();
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
-        JMenuItem menuBasic = new JMenuItem("Calculadora Básica");
-        menuBasic.addActionListener(new MenuController(this));
-        menu.add(menuBasic);
+        JMenuItem calcBasItem = new JMenuItem("Calculadora Básica");
+        calcBasItem.addActionListener(new MenuController(this));
+        menu.add(calcBasItem);
+        JMenuItem darkModeItem = new JMenuItem("Modo Oscuro");
+        darkModeItem.addActionListener(new MenuController(this));
+        menu.add(darkModeItem);
         add(menuBar, BorderLayout.NORTH);
     }
     private void displayResult() {
@@ -69,6 +73,19 @@ public class CalculadoraScientific extends JFrame {
             pad.add(btnArray[i]);
         }
         CalcPanel.add(pad, BorderLayout.CENTER);
+    }
+    public void setDarkMode() {
+        CalcPanel.setBackground(new Color(0x1C1C1C));
+        for (JButton button : btnArray) {
+            button.setBackground(new Color(0x1C1C1C));
+            button.setForeground(Color.WHITE);
+            if(button.getText().equals("=")) {
+                button.setBackground(new Color(100, 0, 0));
+                button.setForeground(new Color(255, 255, 255));
+            }
+        }
+        repaint();
+        revalidate();
     }
 
     public JTextField getDisplay() {
