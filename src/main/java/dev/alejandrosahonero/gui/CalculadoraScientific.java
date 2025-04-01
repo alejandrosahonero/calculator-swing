@@ -62,6 +62,10 @@ public class CalculadoraScientific extends JFrame {
             btnArray[i] = new JButton(botones[i]);
             btnArray[i].setFont(new Font("Arial", Font.PLAIN, 25));
             btnArray[i].addActionListener(calculatorScientificController);
+            if(i==botones.length-1) {
+                btnArray[botones.length-1].setBackground(new Color(100, 0, 0));
+                btnArray[botones.length-1].setForeground(new Color(255, 255, 255));
+            }
             pad.add(btnArray[i]);
         }
         CalcPanel.add(pad, BorderLayout.CENTER);
