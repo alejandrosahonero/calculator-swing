@@ -76,6 +76,13 @@ public class CalculatorController implements ActionListener {
                     nuevaEntrada = true;
                 }
                 break;
+            case "%":
+                if (!contenido.isEmpty()) {
+                    primerNumero = Double.parseDouble(contenido);
+                    operador = "%";
+                    nuevaEntrada = true;
+                }
+                break;
 
             case "=":
                 if (!contenido.isEmpty() && !operador.isEmpty()) {
@@ -94,19 +101,15 @@ public class CalculatorController implements ActionListener {
                         case "/":
                             resultado = primerNumero / segundoNumero;
                             break;
+                        case "%":
+                            resultado = segundoNumero*(primerNumero/100);
+                            break;
                     }
                     calc.getDisplay().setText(String.valueOf(resultado));
                     operador = "";
                     nuevaEntrada = true;
                 }
                 break;
-            case "Change":
-                calc.setVisible(false);
-                calcScientific = new CalculadoraScientific();
-                calcScientific.setVisible(true);
-                break;
-
-
             default:
                 if (nuevaEntrada) {
                     calc.getDisplay().setText(textoBoton);

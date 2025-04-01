@@ -48,11 +48,11 @@ public class Calculadora extends JFrame {
         pad.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         String[] botones = {
-                "Change", "AC", "C", "/",
-                "7", "8", "9", "*",
-                "4", "5", "6", "-",
-                "1", "2", "3", "+",
-                "0", ".", "√", "="
+                "√", "%", "C", "AC",
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", ".", "=", "+"
         };
 
         btnArray = new JButton[botones.length];
@@ -60,6 +60,7 @@ public class Calculadora extends JFrame {
 
         for (int i = 0; i < botones.length; i++) {
             btnArray[i] = new JButton(botones[i]);
+            btnArray[i].setFont(new Font("Arial", Font.PLAIN, 25));
             btnArray[i].addActionListener(calculatorController);
             pad.add(btnArray[i]);
         }

@@ -121,7 +121,11 @@ public class CalculatorScientificController implements ActionListener {
                     nuevaEntrada = true;
                 }
                 break;
-
+            case "π":
+                if (!contenido.isEmpty()) {
+                    primerNumero = Double.parseDouble(contenido+Math.PI);
+                }
+                break;
             case "=":
                 if (!contenido.isEmpty() && !operador.isEmpty()) {
                     double segundoNumero = Double.parseDouble(contenido);
@@ -144,11 +148,6 @@ public class CalculatorScientificController implements ActionListener {
                     operador = "";
                     nuevaEntrada = true;
                 }
-                break;
-            case "Change":
-                calcScientific.setVisible(false);
-                calc = new Calculadora();
-                calc.setVisible(true);
                 break;
             default:
                 if (nuevaEntrada) {
