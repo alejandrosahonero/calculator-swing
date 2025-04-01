@@ -38,6 +38,9 @@ public class CalculadoraScientific extends JFrame {
         JMenuItem darkModeItem = new JMenuItem("Modo Oscuro");
         darkModeItem.addActionListener(new MenuController(this));
         menu.add(darkModeItem);
+        JMenuItem lightModeItem = new JMenuItem("Modo Claro");
+        lightModeItem.addActionListener(new MenuController(this));
+        menu.add(lightModeItem);
         add(menuBar, BorderLayout.NORTH);
     }
     private void displayResult() {
@@ -66,6 +69,8 @@ public class CalculadoraScientific extends JFrame {
             btnArray[i] = new JButton(botones[i]);
             btnArray[i].setFont(new Font("Arial", Font.PLAIN, 25));
             btnArray[i].addActionListener(calculatorScientificController);
+            btnArray[i].setBackground(new Color(0xCCCCCC));
+            btnArray[i].setForeground(Color.BLACK);
             if(i==botones.length-1) {
                 btnArray[botones.length-1].setBackground(new Color(100, 0, 0));
                 btnArray[botones.length-1].setForeground(new Color(255, 255, 255));
@@ -79,6 +84,19 @@ public class CalculadoraScientific extends JFrame {
         for (JButton button : btnArray) {
             button.setBackground(new Color(0x1C1C1C));
             button.setForeground(Color.WHITE);
+            if(button.getText().equals("=")) {
+                button.setBackground(new Color(100, 0, 0));
+                button.setForeground(new Color(255, 255, 255));
+            }
+        }
+        repaint();
+        revalidate();
+    }
+    public void setLightMode() {
+        CalcPanel.setBackground(new Color(0xCCCCCC));
+        for (JButton button : btnArray) {
+            button.setBackground(new Color(0xCCCCCC));
+            button.setForeground(Color.BLACK);
             if(button.getText().equals("=")) {
                 button.setBackground(new Color(100, 0, 0));
                 button.setForeground(new Color(255, 255, 255));

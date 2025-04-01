@@ -18,21 +18,30 @@ public class MenuController implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
-        if (cmd.equals("Calculadora Científica")) {
-            calc.setVisible(false);
-            calcScientific = new CalculadoraScientific();
-            calcScientific.setVisible(true);
-        } else if (cmd.equals("Calculadora Básica")) {
-            calcScientific.setVisible(false);
-            calc = new Calculadora();
-            calc.setVisible(true);
-        }
-        else if (cmd.equals("Modo Oscuro")) {
-            if(calc !=null && calc.isVisible()) {
-                calc.setDarkMode();
-            } else if (calcScientific !=null && calcScientific.isVisible()) {
-                calcScientific.setDarkMode();
-            }
+        switch (cmd) {
+            case "Calculadora Científica":
+                calc.setVisible(false);
+                calcScientific = new CalculadoraScientific();
+                calcScientific.setVisible(true);
+                break;
+            case "Calculadora Básica":
+                calcScientific.setVisible(false);
+                calc = new Calculadora();
+                calc.setVisible(true);
+                break;
+            case "Modo Oscuro":
+                if(calc !=null && calc.isVisible()) {
+                    calc.setDarkMode();
+                } else if (calcScientific !=null && calcScientific.isVisible()) {
+                    calcScientific.setDarkMode();
+                }
+                break;
+            case "Modo Claro":
+                if(calc !=null && calc.isVisible()) {
+                    calc.setLightMode();
+                } else if (calcScientific !=null && calcScientific.isVisible()) {
+                    calcScientific.setLightMode();
+                }
         }
     }
 }
